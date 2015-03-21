@@ -7,11 +7,10 @@
 * Registration & Org-level data entry
 * Location-level data entry
 3) Database and Preference Structure
-4) Consumer experience 
-* UI for end user
-** maps
-** planning/itinerary
-** tour (dynamic/sponsored)
-** non-offensive notifications
-** open/passenger view
-** augmented reality "enhanced view"
+4) Consumer experience: UI for end user
+* maps
+* planning/itinerary
+* tour (dynamic/sponsored)
+* non-offensive notifications
+* open/passenger view
+* augmented reality "enhanced view"
