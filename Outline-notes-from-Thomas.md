@@ -37,7 +37,7 @@
 * Road Trippers
 * Field Trips/Educators
 
- ##Use Case Scenarios
+##Use Case Scenarios
 
 * Scenario – Bicyclists Tom and Linda
 * Activate “road trip mode” (could automatically activate X miles from “home”)
