@@ -3,7 +3,7 @@
 <head>
       <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Free Bootstrap Admin Template : Binary Admin</title>
+    <title>Touricana | Red Wing Historic Gems</title>
 	<!-- BOOTSTRAP STYLES-->
     <link href="assets/css/bootstrap.css" rel="stylesheet" />
      <!-- FONTAWESOME STYLES-->
@@ -26,72 +26,29 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">Binary admin</a>
+                <a class="navbar-brand" href="index.html">Touricana</a>
             </div>
-  <div style="color: white; padding: 15px 50px 5px 50px;float: right; font-size: 16px;"> Last access : 30 May 2014 &nbsp; <a href="#" class="btn btn-danger square-btn-adjust">Logout</a> </div>
+  <!-- <div style="color: white; padding: 15px 50px 5px 50px;float: right; font-size: 16px;"> Last access : 30 May 2014 &nbsp; <a href="#" class="btn btn-danger square-btn-adjust">Logout</a> </div> -->
         </nav>
            <!-- /. NAV TOP  -->
         <nav class="navbar-default navbar-side" role="navigation">
           <div class="sidebar-collapse">
             <ul class="nav" id="main-menu">
-				      <li class="text-center">
-                <img src="assets/img/find_user.png" class="user-image img-responsive"/>
-					    </li>
               <li>
-                <a class="active-menu"  href="index.html"><i class="fa fa-dashboard fa-3x"></i> Dashboard</a>
+                <a class="#"  href="index.html"><i class="fa fa-home fa-3x"></i> Home</a>
               </li>
               <li>
-                <a  href="ui.html"><i class="fa fa-desktop fa-3x"></i> UI Elements</a>
+                <a  href="#"><i class="fa fa-map-marker fa-3x"></i> Routes</a>
               </li>
-              <li>
-                <a  href="tab-panel.html"><i class="fa fa-qrcode fa-3x"></i> Tabs & Panels</a>                </li>
-						    <li>
-                <a   href="chart.html"><i class="fa fa-bar-chart-o fa-3x"></i> Morris Charts</a>
-              </li>
-                <li>
-                  <a  href="table.html"><i class="fa fa-table fa-3x"></i> Table Examples</a>
-                </li>
-                <li>
-                  <a  href="form.html"><i class="fa fa-edit fa-3x"></i> Forms </a>
-                </li>
-                <li>
-                  <a href="#"><i class="fa fa-sitemap fa-3x"></i> Multi-Level Dropdown<span class="fa arrow"></span></a>
-                    <ul class="nav nav-second-level">
-                      <li>
-                        <a href="#">Second Level Link</a>
-                      </li>
-                      <li>
-                        <a href="#">Second Level Link</a>
-                      </li>
-                      <li>
-                        <a href="#">Second Level Link<span class="fa arrow"></span></a>
-                        <ul class="nav nav-third-level">
-                          <li>
-                            <a href="#">Third Level Link</a>
-                          </li>
-                          <li>
-                            <a href="#">Third Level Link</a>
-                          </li>
-                          <li>
-                            <a href="#">Third Level Link</a>
-                          </li>
-                        </ul>
-                      </li>
-                    </ul>
-                  </li>
-                  <li>
-                    <a  href="blank.html"><i class="fa fa-square-o fa-3x"></i> Blank Page</a>
-                  </li>
-                </ul>
               </div>
         </nav>
         <!-- /. NAV SIDE  -->
-        <div id="page-wrapper" >
+        <div id="page-wrapper" ng-controller="ToursController" >
             <div id="page-inner">
               <div class="row">
                   <div class="col-md-12">
-                   <h2>tour.name</h2>
-                      <h5>tags: ng-repeat tag in tour.tags</h5>
+                   <h2>{{allTours[0]["name"]}}</h2>
+                      <h5>tags: <span ng-repeat="tag in allTours[0].tags"><a href="#">{{tag}} </a></span></h5>
                   </div>
               </div>
              <!-- /. ROW  -->
@@ -111,9 +68,9 @@
          <div class="col-md-3 col-sm-12 col-xs-12">
            <div class="panel back-dash">
              <!-- <i class="fa fa-dashboard fa-3x"></i> -->
-             <em>CREATOR</em>
-             <strong>tour.creator. name</strong>
-             <p class="text-muted">tour. creator. info</p>
+             <em>CREATOR</em><br />
+             <strong>{{allTours[0]["creator"]}}</strong>
+             <p class="text-muted" style="text-align: left;">{{allTours[0]["creatorInfo"]}}</p>
            </div>
          </div>
                     <!-- <div class="col-md-3 col-sm-12 col-xs-12 ">
@@ -144,7 +101,7 @@
 
         </div>
         <hr />
-        <div class="tour-stops">
+        <div class="tour-stops" ng-repeat="stop in allTours[0]['stops']">
           <div class="tour-stop row">
             <div class="col-md-12 col-sm-12 col-xs-12">
               <div class="panel panel-back noti-box">
@@ -156,54 +113,17 @@
                   </div>
                   <div class="col-md-10 col-sm-10 col-xs-10">
                     <div class="text-box" >
-                      <p class="stop-name"><h4>tour. stop. name</h4><br /><span class="stop-address text-muted">tour. stop. address</span></p>
-                      <p class="stop-description">tour. stop. decription</p>
+                      <p class="stop-name"><h3>{{stop.name}}</h3>
+                        <!-- <span class="stop-address text-muted">tour. stop. address</span> -->
+                      </p>
+                      <p class="stop-description">{{stop.detail}}</p>
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-
-          <hr />
-          <!-- /. ROW  -->
-          <div class="row">
-            <div class="col-md-9 col-sm-12 col-xs-12">
-              <div class="panel panel-default">
-                <div class="panel-heading">
-                            Bar Chart Example
-                        </div>
-                        <div class="panel-body">
-                            <div id="morris-bar-chart"></div>
-                        </div>
-                    </div>
-                </div>
-                    <div class="col-md-3 col-sm-12 col-xs-12">
-                    <div class="panel panel-primary text-center no-boder bg-color-green">
-                        <div class="panel-body">
-                            <i class="fa fa-bar-chart-o fa-5x"></i>
-                            <h3>120 GB </h3>
-                        </div>
-                        <div class="panel-footer back-footer-green">
-                           Disk Space Available
-
-                        </div>
-                    </div>
-                    <div class="panel panel-primary text-center no-boder bg-color-red">
-                        <div class="panel-body">
-                            <i class="fa fa-edit fa-5x"></i>
-                            <h3>20,000 </h3>
-                        </div>
-                        <div class="panel-footer back-footer-red">
-                            Articles Pending
-
-                        </div>
-                    </div>
-                        </div>
-
-           </div>
-                 <!-- /. ROW  -->
-
+      </div>     <!-- /. ROW  -->
     </div>
              <!-- /. PAGE INNER  -->
             </div>
@@ -221,8 +141,8 @@
      <script src="assets/js/morris/raphael-2.1.0.min.js"></script>
     <script src="assets/js/morris/morris.js"></script>
       <!-- CUSTOM SCRIPTS -->
-    <script src="assets/js/custom.js"></script>
     <script src="node_modules/angular/angular.min.js"></script>
+    <script src="assets/js/custom.js"></script>
     <script src="assets/js/tours.js"></script>
   </div>
 
