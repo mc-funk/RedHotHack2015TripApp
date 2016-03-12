@@ -1,1 +1,4 @@
-lksanlSADnlaf
+Data needed per location:
+LatLong
+Name
+Images/Media
