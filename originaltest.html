@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html >
+<head>
+<meta charset="UTF-8">
+<meta name="google" value="notranslate">
+<title>CodePen - Routing</title>
+<link rel="stylesheet" href="//codepen.io/assets/reset/normalize.css">
+<link rel="stylesheet prefetch" href="https://developers.route360.net/vendors/leaflet/leaflet.css">
+<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css" />
+<link rel="stylesheet prefetch" href="https://developers.route360.net/vendors/jquery-ui/jquery-ui-1.10.0.custom.css">
+<link rel="stylesheet prefetch" href="https://developers.route360.net/resources/css/r360.css">
+<style>
+#map {
+	width: 100%;
+	height: 750px;
+	;
+}
+</style>
+<script>
+  window.console = window.console || function(t) {};
+</script>
+</head>
+
+<body>
+<head>
+
+<!-- CSS -->
+<link rel="stylesheet" href="https://developers.route360.net/vendors/leaflet/leaflet.css" />
+<link rel="stylesheet" href="https://developers.route360.net/vendors/jquery-ui/jquery-ui-1.10.0.custom.css" />
+<link rel="stylesheet" href="https://developers.route360.net/resources/css/r360.css" />
+
+<!--  JS --> 
+
+<!--  Include r360.js --> 
+<script src="https://developers.route360.net/vendors/r360/r360-core-src.js"></script> 
+
+<!--  Include jQuery and jQuery UI --> 
+<script src="https://developers.route360.net/vendors/jquery/jquery.min.js"></script> 
+<script src="https://developers.route360.net/vendors/jquery-ui/jquery-ui.min.js"></script> 
+
+<!--  in case you want to use Leaflet --> 
+<script src="https://developers.route360.net/vendors/leaflet/leaflet.js"></script> 
+<script src="https://developers.route360.net/vendors/r360/r360-leaflet-src.js"></script>
+</head>
+
+<body>
+<div id="map"></div>
+</body>
+<script src="//assets.codepen.io/assets/common/stopExecutionOnTimeout-f961f59a28ef4fd551736b43f94620b5.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.2/underscore-min.js"></script>
+<script>
+      $(document).ready(function () {
+    var latlons = {
+    map: [44.58187, -92.600212], // redwing general Map
+    src1: [44.5643954, -92.5319313], // Ignite Building
+    trg1: [44.569922, -92.638006], // Alexander P. Anderson Estate-Tower View
+    trg2: [44.564444, -92.539444], // Chicago Great Western Depot
+	trg3: [44.562222, -92.540278], //  James L. Lawther House
+    trg4: [44.566069, -92.536956], // Red Wing Iron Works
+	trg5: [44.569922, -92.638006], // Theodore B. Sheldon House
+    };
+    var map = L.map('map').setView(latlons.map, 12);
+    var attribution = '<a href=\'https://www.mapbox.com/about/maps/\' target=\'_blank\'>\xA9 Mapbox \xA9 OpenStreetMap</a> | \xD6PNV Daten \xA9 <a       href=\'https://www.vbb.de/de/index.html\' target=\'_blank\'>VBB</a> | developed by <a href=\'https://www.route360.net/de/\' target=\'_blank\'>Route360\xB0</a>';
+    L.tileLayer('https://a.tiles.mapbox.com/v3/mi.0ad4304c/{z}/{x}/{y}.png', {
+        maxZoom: 18,
+        attribution: attribution
+    }).addTo(map);
+  r360.config.serviceKey = 'LI7EUNK77AUSEUADB7KN';
+  r360.config.serviceUrl = 'https://service.route360.net/na_northeast/';
+    var redIcon = L.icon({
+        iconUrl: 'https://developers.route360.net/download/basic-example/images/marker-icon-red.png',
+        shadowUrl: 'https://developers.route360.net/download/basic-example/images/marker-shadow.png',
+        iconAnchor: [
+            12,
+            45
+        ],
+        popupAnchor: [
+            0,
+            -35
+        ]
+    });
+    var sourceMarker1 = L.marker(latlons.src1).addTo(map);
+    var targetMarker1 = L.marker(latlons.trg1, { icon: redIcon }).addTo(map);
+    var targetMarker2 = L.marker(latlons.trg2, { icon: redIcon }).addTo(map);
+	var targetMarker3 = L.marker(latlons.trg3, { icon: redIcon }).addTo(map);
+    var targetMarker4 = L.marker(latlons.trg4, { icon: redIcon }).addTo(map);
+    var targetMarker5 = L.marker(latlons.trg5, { icon: redIcon }).addTo(map);
+    var routeLayer = L.featureGroup().addTo(map);
+    var travelOptions = r360.travelOptions();
+    travelOptions.addSource(sourceMarker1);
+	travelOptions.addTarget(targetMarker1);
+	travelOptions.addTarget(targetMarker2);
+	travelOptions.addTarget(targetMarker3);
+	travelOptions.addTarget(targetMarker4);
+  	travelOptions.addTarget(targetMarker5);
+    travelOptions.setTravelType('transit');
+    r360.RouteService.getRoutes(travelOptions, function (routes) {
+        _.each(routes, function (route) {
+            r360.LeafletUtil.fadeIn(routeLayer, route, 1000, 'travelDistance');
+        });
+    });
+});
+      //@ sourceURL=pen.js
+    </script>
+<script>
+  if (document.location.search.match(/type=embed/gi)) {
+    window.parent.postMessage("resize", "*");
+  }
+</script>
+
+</body>
+</html>
