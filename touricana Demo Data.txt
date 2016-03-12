@@ -1,4 +1,9 @@
 Data needed per location:
+Location Name
+Longitude
+Latitude
 LatLong
-Name
-Images/Media
+Info
+ImportantDate
+Category
+TourName
