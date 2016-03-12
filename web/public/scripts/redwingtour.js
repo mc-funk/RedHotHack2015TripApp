@@ -9,13 +9,13 @@
     },
     {
       name: "Chicago Great Western Depot",
-      latlong:"46.729553; -94.6859",
+      latlong:"44.564444; -92.539444",
       detail:"The Chicago Great Western Depot at 726 East Main Street in Red Wing, in the U.S. State of Minnesota, is a former railroad station listed on the National Register of Historic Places. The depot was built in 1906 after the Chicago Great Western Railway (CGW) acquired two small railroads: the Minnesota Central, which connected to Cannon Falls; and the Duluth, Red Wing, and Southern, which connected to Zumbrota. CGW established a divisional headquarters and built this depot in 1906, with passenger space on the first floor and office space on the second floor. The red brick structure was the largest depot the railroad built in Minnesota."
       category: "historical bulidings"
     },
     {
       name: "James L. Lawther House",
-      latlong: "46.729553;-94.6859",
+      latlong: "44.562222, -92.540278",
       detail: "the James L. Lawther House is an octagon house in Red Wing, Minnesota, United States. The owner, James Lawther, built it after he visited Dubuque, Iowa and toured the Langworthy House there. At the time, the Langworthy House was the grandest house of its type on the upper Mississippi River. The Lawther House was built in 1857, with an addition in 1870.[2] Its location, at the corner of Third and Hill Streets, has been termed "one of the most architecturally significant intersections in Minnesota" and is part of the Red Wing Residential Historic District. It is listed on the National Register of Historic Places."
       category: "historical bulidings",
       images: []
